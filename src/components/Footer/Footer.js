@@ -2,7 +2,7 @@
 
 const Footer = () => {
     return (
-        <footer id="site-footer">
+        <footer id="footer">
             <p>@PetMyPet</p>
         </footer>
     )
