@@ -31,7 +31,6 @@ class Categories extends Component {
     }
 
     render() {
-        console.log(this.state.pets)
         return (
             <section className="dashboard">
                 <h1>Dashboard</h1>

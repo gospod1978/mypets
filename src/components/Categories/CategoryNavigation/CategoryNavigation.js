@@ -1,5 +1,9 @@
 import { NavLink } from 'react-router-dom'
 
+const active = `
+.active {
+    background-color: lightgreen !important
+}`
 const CategoryNavigation = () => {
     return (
         <nav className="navbar">
@@ -10,11 +14,7 @@ const CategoryNavigation = () => {
                 <li><NavLink to="/categories/Parrot">Parrots</NavLink></li>
                 <li><NavLink to="/categories/Reptile">Reptiles</NavLink></li>
                 <li><NavLink to="/categories/Other">Other</NavLink></li>
-                <style jsx>{`
-                    .active {
-                        background-color: lightgreen !important
-                    }
-                `}</style>
+                <style jsx>{active}</style>
             </ul>
         </nav>
     )

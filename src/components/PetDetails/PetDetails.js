@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import * as petService from '../../services/petService'
+import { Link } from 'react-router-dom'
 
 const PetDetails = ({
     match
@@ -11,13 +12,17 @@ const PetDetails = ({
                   .then(res => setPet(res))
     }, [match])
     return (
-        <section class="detailsOtherPet">
+        <section className="detailsOtherPet">
         <h3>{pet.name}</h3>
-        <p>Pet counter: {pet.likes} <a href="#"><button class="button"><i class="fas fa-heart"></i>
+        <p>Pet counter: {pet.likes} <a href="/"><button className="button"><i className="fas fa-heart"></i>
                     Pet</button></a>
         </p>
-        <p class="img"><img src={pet.imageURL} /></p>
-        <p class="description">{pet.description}</p>
+        <p className="img"><img src={pet.imageURL} alt="pic"/></p>
+        <p className="description">{pet.description}</p>
+        <div className="pet-info">
+            <Link to={`/pets/details/${pet.id}/edit`}><button className="button">Edit</button></Link>
+            <Link to="#"><button className="button">Delete</button></Link>
+        </div>
     </section>
     )
 }

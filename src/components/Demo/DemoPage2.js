@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 const options = [
     {label:'IT', value:'it'},
@@ -6,31 +6,27 @@ const options = [
     {label:'CV', value:'cv'},
     {label:'RM', value:'rm'},
 ]
-class DemoPage2 extends Component {
+export default class DemoPage1 extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: 'Pesho',
+            username: '',
             age: 18,
             bio: 'Lorem ipsum',
             occupation: 'rm',
+            error: ''
         }
         this.onChangeHandler = this.onChangeHandler.bind(this)
-        // this.emailInput = React.createRef()
-    }
-    componentDidMount() {
-        console.log(this.state)
+        this.onSubmitHandler = this.onSubmitHandler.bind(this)
     }
     onSubmitHandler(e)  {
         e.preventDefault()
-        // const {username, age} = this.state;
         console.log(this.state)
-        console.log(this.emailInput.current)
     }
     //generic onChange method
     onChangeHandler(e) {
         this.setState({[e.target.name]: e.target.value})
-        console.log(e.target.username)
+        console.log(e.target.value)
     }
     render() {
         return (
@@ -41,10 +37,6 @@ class DemoPage2 extends Component {
                     <form onSubmit={this.onSubmitHandler}>
                         <label htmlFor="username">Username</label>
                         <input type="text" id="username" placeholder="Pesho" name="username" value={this.state.username} onChange={this.onChangeHandler} />
-                        <br />
-                        {/* <label htmlFor="email">Email</label> */}
-                        {/* <input ref={this.emailInput} type="email" id="email" name="email" placeholder="example@gmsil.com"/> */}
-                        <br />
                         <label htmlFor="age">Age</label>
                         <input type="number" id="age" value={this.state.age} name="age" onChange={this.onChangeHandler}/>
                         <br />
@@ -66,5 +58,3 @@ class DemoPage2 extends Component {
         )
     }
 }
-
-export default DemoPage2

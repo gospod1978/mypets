@@ -561,3 +561,6 @@ nav.navbar ul li:hover > a {
 .navbar-anonymous ul{
     display: flex;
 }
+.navbar-margin {
+    margin-right: 0.5rem;
+}
