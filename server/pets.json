@@ -1,19 +1,12 @@
 {
   "pets": [
     {
-      "id": "5bb0888ee1d636567dc9f627",
-      "name": "Yara",
-      "description": "MARA MARA MARA",
+      "name": "Yara2",
+      "description": "Dogy Dogy MyDogy",
       "imageURL": "https://cdn1-www.dogtime.com/assets/uploads/2017/09/pit-bull-puppies-2.jpg",
-      "category": "Dog",
-      "likes": "3",
-      "_acl": {
-        "creator": "5bb0874caccb650325e0227b"
-      },
-      "_kmd": {
-        "lmt": "2018-10-03T08:04:40.812Z",
-        "ect": "2018-09-30T08:25:50.963Z"
-      }
+      "category": "Cat",
+      "likes": 3,
+      "id": "5bb0888ee1d636567dc9f627"
     },
     {
       "id": "5bb08ba9e1d636567dca0767",
@@ -110,13 +103,15 @@
       "description": "My Cat",
       "imageURL": "https://i.imgur.com/RP9RGdQ.jpg",
       "category": "Cat",
-      "id": "2monghh"
+      "id": "2monghh",
+      "likes": "5"
     },
     {
       "name": "my DOgy",
       "description": "very good dog",
       "imageURL": "https://i.imgur.com/RP9RGdQ.jpg",
       "category": "Other",
+      "likes": "5",
       "id": "bvLZ2ok"
     },
     {
@@ -124,6 +119,7 @@
       "description": "Very lovle horse",
       "imageURL": "https://i.imgur.com/RP9RGdQ.jpg",
       "category": "Other",
+      "likes": 8,
       "id": "gsLddWa"
     }
   ]
