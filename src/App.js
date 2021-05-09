@@ -7,6 +7,7 @@ import PetDetails from './components/PetDetails/PetDetails'
 import EditPetDetails from './components/EditPetDetails/EditPetDetails'
 import CreatePet from './components/CreatePet/CreatePet'
 import EditPet from './components/EditPet/EditPet'
+import Demo from './components/Demo/Demo'
 import './App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='/pets/details/:petId/edit' exact component={EditPetDetails} />
         <Route path='/pets/create' exact component={CreatePet} />
         <Route path='/pets/:petId/edit' exact component={EditPet} />
+        <Route path='/demo' exact component={Demo} />
       </Switch>
 
       <Footer />
@@ -31,4 +33,4 @@ function App() {
 export default App;
 
 
-// 10 lekcia
+// 12 lekcia
