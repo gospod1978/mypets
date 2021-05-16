@@ -12,6 +12,8 @@ import Login from './components/Login/Login'
 import Register from './components/Register/Register'
 import Demo from './components/Demo/Demo'
 import Advanced from './components/AdvancedDemo/Advanced'
+import Advanced2 from './components/AdvancedDemo2/Advanced'
+import Advanced3 from './components/AdvancedDemo3/Advanced'
 import { auth } from './utils/firebase'
 import './App.css';
 
@@ -55,6 +57,8 @@ function App() {
         <Route path='/login' exact component={Login} />
         <Route path='/register' exact component={Register}/>
         <Route path='/advanced' exact component={Advanced}/>
+        <Route path='/advanced2' exact component={Advanced2}/>
+        <Route path='/advanced3' exact component={Advanced3}/>
       </Switch>
 
       <Footer />
@@ -65,4 +69,4 @@ function App() {
 export default App;
 
 
-// 13 lekcia
+// 14 last lekcia
