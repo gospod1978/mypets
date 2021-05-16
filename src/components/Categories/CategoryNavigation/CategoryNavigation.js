@@ -14,7 +14,7 @@ const CategoryNavigation = () => {
                 <li><NavLink to="/categories/Parrot">Parrots</NavLink></li>
                 <li><NavLink to="/categories/Reptile">Reptiles</NavLink></li>
                 <li><NavLink to="/categories/Other">Other</NavLink></li>
-                <style jsx>{active}</style>
+                <style>{active}</style>
             </ul>
         </nav>
     )

@@ -1,4 +1,5 @@
-import { Route, Switch } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Route, Switch , Redirect} from 'react-router-dom'
 
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
@@ -8,21 +9,50 @@ import EditPetDetails from './components/EditPetDetails/EditPetDetails'
 import CreatePet from './components/CreatePet/CreatePet'
 import EditPet from './components/EditPet/EditPet'
 import Demo from './components/Demo/Demo'
+import Login from './components/Login/Login'
+import Register from './components/Register/Register'
+import { auth } from './utils/firebase'
 import './App.css';
 
 function App() {
+
+  const [user, setUser] = useState(null)
+
+  useEffect(() => { auth.onAuthStateChanged(setUser) }, [])
+  //THE SAME
+  // useEffect(() => {
+  //   auth.onAuthStateChanged((authUser) => {
+  //     if (authUser) {
+  //       setUser(authUser)
+  //     } else {
+  //       setUser(null)
+  //     }
+  //   })
+  // }, [])
+
+  const authInfo = {
+    isAuthenticated: Boolean(user),
+    user: user?.email
+  }
+
   return (
     <div className="container">
-      <Header />
+      <Header {...authInfo}/>
 
       <Switch>
-        <Route path='/' exact component={Categories} />
-        <Route path='/categories/:category' exact component={Categories} />
-        <Route path='/pets/details/:petId' exact component={PetDetails} />
-        <Route path='/pets/details/:petId/edit' exact component={EditPetDetails} />
-        <Route path='/pets/create' exact component={CreatePet} />
-        <Route path='/pets/:petId/edit' exact component={EditPet} />
+        <Route path='/' exact render={props => <Categories {...props} {...authInfo}/>} />
+        <Route path='/categories/:category' render={props => <Categories {...props} {...authInfo} />} />
+        <Route path='/pets/details/:petId' exact render={props => <PetDetails {...props} {...authInfo}/>} />
+        <Route path='/pets/details/:petId/edit' exact render={props => <EditPetDetails {...props} {...authInfo}/>} />
+        <Route path='/pets/create' exact render={props => <CreatePet {...props} {...authInfo}/>} />
+        <Route path='/pets/:petId/edit' exact render={props => <EditPet {...props} {...authInfo} />} />
         <Route path='/demo' exact component={Demo} />
+        <Route path='/logout' render={() => {
+          auth.signOut()
+          return <Redirect to="/"/>
+        }}/>
+        <Route path='/login' exact component={Login} />
+        <Route path='/register' exact component={Register}/>
       </Switch>
 
       <Footer />

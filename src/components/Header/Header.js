@@ -1,37 +1,29 @@
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react/cjs/react.development'
+import { auth } from '../../utils/firebase'
 
-const Header = () => {
-    let userName = 'Pesho'
-    const changeName = (e) => {
-        e.preventDefault()
-        console.log(userName)
-        if(userName !== 'Pesho') {
-            userName = 'Pesho'
-        } else {
-            userName = ''
+const Header = ({
+    user
+}) => {
+
+    
+    useEffect(() => {
+        if (user) {
+        auth.currentUser.getIdToken()
+            .then(function(idToken) {
+                return fetch('http://localhost:5001', {
+                    headers: {
+                        'Authorization': idToken 
+                    }
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
         }
-    }
-    const viewButton = () => {
-        if(userName !== 'Pesho') {
-            return (
-                <div className="second-bar">
-                    <ul>
-                        <li>Welcome, {userName}!</li>
-                        <li><a href="/" onClick={changeName}><i className="fas fa-sign-out-alt"></i> Logout</a></li>
-                    </ul>
-                </div>
-            )
-        } else {
-            return (
-                <section className="navbar-anonymous">
-                    <ul>
-                        <li className="navbar-margin"><Link onClick={changeName} to="/"><i className="fas fa-user-plus"></i> Register</Link></li>
-                        <li><Link onClick={changeName} to="/"><i className="fas fa-sign-in-alt"></i> Login</Link></li>
-                    </ul>
-                </section>
-            )
-        }
-    }
+    }, [user])
+
     return (
         <header id="site-header">
             <nav className="navbar">
@@ -42,25 +34,26 @@ const Header = () => {
                         <Link className="button" to="/">My Pets</Link>
                         <Link className="button" to="/pets/create">Add Pet</Link>
                     </div>
-                    {viewButton()}
-                    {/* {userName !=='' ?
-                        <div className="second-bar">
+                    {user == null ?
+                        <section className="navbar-anonymous">
                             <ul>
-                                <li>Welcome, {userName}!</li>
-                                <li><a href="/" onClick={changeName}><i className="fas fa-sign-out-alt"></i> Logout</a></li>
-                            </ul>
-                        </div>
-                    : <section className="navbar-anonymous">
-                            <ul>
-                                <li className="navbar-margin"><Link onClick={changeName} to="/"><i className="fas fa-user-plus"></i> Register</Link></li>
-                                <li><Link onClick={changeName} to="/"><i className="fas fa-sign-in-alt"></i> Login</Link></li>
+                                <li className="navbar-margin"><Link to="/register"><i className="fas fa-user-plus"></i> Register</Link></li>
+                                <li><Link to="/login"><i className="fas fa-sign-in-alt"></i> Login</Link></li>
                             </ul>
                         </section>
-                    } */}
+                        :
+                        <div className="second-bar">
+                            <ul>
+                                <li>Welcome, {user}!</li>
+                                <li><Link to="/logout"><i className="fas fa-sign-out-alt"></i> Logout</Link></li>
+                            </ul>
+                        </div>
+                    }
                 </section>
             </nav>
         </header>
     )
+
 }
 
 export default Header
