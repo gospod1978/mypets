@@ -8,6 +8,17 @@ nav.navbar {
   padding: 0.8rem 1rem;
   color: white;
 }
+.advanced {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    margin: 100px;
+}
+
+.advanced button{
+    width: 80px;
+}
 #site-header > nav > section.navbar-dashboard > a{
     list-style: none;
     text-decoration: none;

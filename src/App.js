@@ -8,9 +8,10 @@ import PetDetails from './components/PetDetails/PetDetails'
 import EditPetDetails from './components/EditPetDetails/EditPetDetails'
 import CreatePet from './components/CreatePet/CreatePet'
 import EditPet from './components/EditPet/EditPet'
-import Demo from './components/Demo/Demo'
 import Login from './components/Login/Login'
 import Register from './components/Register/Register'
+import Demo from './components/Demo/Demo'
+import Advanced from './components/AdvancedDemo/Advanced'
 import { auth } from './utils/firebase'
 import './App.css';
 
@@ -53,6 +54,7 @@ function App() {
         }}/>
         <Route path='/login' exact component={Login} />
         <Route path='/register' exact component={Register}/>
+        <Route path='/advanced' exact component={Advanced}/>
       </Switch>
 
       <Footer />
@@ -63,4 +65,4 @@ function App() {
 export default App;
 
 
-// 12 lekcia
+// 13 lekcia
