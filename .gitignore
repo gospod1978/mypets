@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /server/node_modules
+/server/mypets-d0913-firebase-adminsdk-dy3u5-006f8ea8e7.json
 /.pnp
 .pnp.js
 
